@@ -89,9 +89,36 @@
    - Caption (teks utama)
    - Hashtags (dari data trending)
    - CTA (ajakan: like, comment, share)
-3. **Media**: Kamu kirim gambar/video → kita simpen **link** di kolom `media_url`
+   - **Image Prompt** (Nano Banana) — prompt AI buat generate gambar
+   - **Video Prompt** (Veo 3.1) — prompt AI buat generate video
+3. **Media**: Kamu kirim gambar/video atau generate dari prompt → link disimpan di `media_url`
 4. **Schedule**: Jadwal posting via Repliz → otomatis ke Instagram/TikTok
-5. **Save**: Semua tersimpan di `content_db.content_drafts`
+5. **Save**: Semua tersimpan di `content_db.content_drafts` + prompt di `image_prompt` / `video_prompt`
+
+### 🖼️ Prompt Nano Banana (Image)
+
+**Formula:** `[Subject] + [Action] + [Location/context] + [Composition] + [Style]`
+
+Best practices dari Google:
+- **Be specific**: Detail soal subjek, pencahayaan, komposisi
+- **Positive framing**: "empty street" bukan "no cars"
+- **Camera control**: low angle, aerial view, shallow depth of field
+- **Aspect ratio**: 1:1 (feed IG), 9:16 (story/reels), 16:9 (horizontal)
+- Resolusi support: 1K, 2K, 4K
+
+Contoh: *"A striking fashion model wearing a tailored brown dress, posing confidently against a deep cherry red studio backdrop, medium-full shot, fashion editorial style, medium-format analog film, pronounced grain."*
+
+### 🎬 Prompt Veo 3.1 (Video)
+
+**Formula:** `[Cinematography] + [Subject] + [Action] + [Context] + [Style & Ambiance]`
+
+Cinematography options: dolly shot, tracking shot, crane shot, aerial view, slow pan, POV, close-up, low angle
+
+**Audio support:** Dialogue pakai quotes, SFX, ambient noise
+
+Spesifikasi: 720p/1080p, 16:9/9:16, 4-8 detik
+
+Contoh: *"Medium shot, a tired corporate worker rubbing his temples in exhaustion, in front of a bulky computer in a cluttered office late at night, lit by harsh fluorescent lights, retro aesthetic, grainy."*
 
 ## ⚠️ Keterbatasan yang Diketahui
 
@@ -99,10 +126,10 @@
 |---------|--------|-------|
 | ❌ **Start DM baru** | Tidak bisa | Repliz/Meta API gak izinin ngirim DM ke user baru — cuma bisa reply ke DM yg udah masuk |
 | ❌ **Like postingan** | Tidak bisa | Repliz API gak punya endpoint like — limitasi platform API |
-| ❌ **Image generation** | Skip | Kamu kirim sendiri medianya, kita simpen link aja |
-| ✅ **Komen di postingan** | ✅ Bisa | Sudah dites — IG + TikTok berhasil! |
-| ✅ **Jadwal posting** | ✅ Bisa | Sudah dites — ⏰ bisa jadwal + gambar |
+| ✅ **Komen di postingan** | ✅ Bisa | IG + TikTok udah dites berhasil |
+| ✅ **Jadwal posting** | ✅ Bisa | Bisa jadwal + gambar via Repliz |
 | ✅ **Reply DM existing** | ✅ Bisa | Balas DM yg udah masuk ke akun |
+| ✅ **Prompt generation** | ✅ Siap | Nano Banana (gambar) + Veo 3.1 (video) — langsung output template
 
 ## 🤖 Agents
 

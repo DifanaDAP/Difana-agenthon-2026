@@ -65,6 +65,8 @@ CREATE TABLE content_db.content_drafts (
     hashtags      TEXT[],
     cta           TEXT,
     media_url     TEXT[],
+    image_prompt  TEXT,
+    video_prompt  TEXT,
     platform      VARCHAR(50) NOT NULL,
     status        VARCHAR(50) DEFAULT 'draft' CHECK (status IN ('draft', 'review', 'approved', 'scheduled', 'posted', 'cancelled')),
     scheduled_at  TIMESTAMPTZ,
