@@ -1,0 +1,33 @@
+# Environment
+.env
+.env.local
+*.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OpenClaw
+.openclaw/
+
+# Logs
+*.log
+/logs/
+
+# API keys — don't commit
+**/api-keys.md
+
+# Temp
+tmp/
+/tmp/
