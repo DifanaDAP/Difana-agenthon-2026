@@ -91,8 +91,8 @@
    - CTA (ajakan: like, comment, share)
    - **Image Prompt** (Nano Banana) — prompt AI buat generate gambar
    - **Video Prompt** (Veo 3.1) — prompt AI buat generate video
-3. **Media**: Kamu kirim gambar/video atau generate dari prompt → link disimpan di `media_url`
-4. **Schedule**: Jadwal posting via Repliz → otomatis ke Instagram/TikTok
+3. **Media**: Kamu kirim gambar/video via chat → file disimpan lokal + link publik (Google Drive, dll) disimpan di kolom `media_url`
+4. **Schedule**: Jadwal posting via Repliz → Repliz cuma nerima URL publik (gak bisa upload file langsung)
 5. **Save**: Semua tersimpan di `content_db.content_drafts` + prompt di `image_prompt` / `video_prompt`
 
 ### 🖼️ Prompt Nano Banana (Image)
@@ -132,10 +132,32 @@ Contoh real (dari riset matcha kita):
 |---------|--------|-------|
 | ❌ **Start DM baru** | Tidak bisa | Repliz/Meta API gak izinin ngirim DM ke user baru — cuma bisa reply ke DM yg udah masuk |
 | ❌ **Like postingan** | Tidak bisa | Repliz API gak punya endpoint like — limitasi platform API |
+| ❌ **Upload file langsung** | Tidak bisa | Repliz cuma nerima URL publik — file harus di-host dulu (Google Drive, image host, dll) |
 | ✅ **Komen di postingan** | ✅ Bisa | IG + TikTok udah dites berhasil |
-| ✅ **Jadwal posting** | ✅ Bisa | Bisa jadwal + gambar via Repliz |
+| ✅ **Jadwal posting** | ✅ Bisa | Bisa jadwal + gambar/video via URL publik |
 | ✅ **Reply DM existing** | ✅ Bisa | Balas DM yg udah masuk ke akun |
-| ✅ **Prompt generation** | ✅ Siap | Nano Banana (gambar) + Veo 3.1 (video) — langsung output template
+| ✅ **Prompt generation** | ✅ Siap | Nano Banana (gambar) + Veo 3.1 (video) — langsung output template |
+
+### 📤 Alur Upload Media
+
+Karena Repliz cuma nerima URL publik, ini alur upload-nya:
+
+```
+Lo kirim file (gambar/video) → Gue simpan di server
+    ↓
+Lo upload ke Google Drive / image host / public storage
+    ↓
+Lo kasih link publik ke gue
+    ↓
+Gue masukin link ke Repliz → Posting otomatis
+    ↓
+Link tersimpan di kolom media_url di database
+```
+
+**Kenapa gak bisa upload langsung dari chat?**
+- Repliz API cuma nerima URL, bukan data file binary
+- File lo harus punya URL publik yang bisa diakses Repliz
+- Google Drive, ImgBB, Catbox, atau storage sendiri bisa dipake
 
 ## 🤖 Agents
 
