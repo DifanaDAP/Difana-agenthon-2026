@@ -17,16 +17,92 @@
 └──────────────────────────────────────────────────────────────┘
 ```
 
-## 🔄 Alur Data
+## 🔄 Flowchart Alur Kerja
 
 ```
-User Input → RESEARCH (scrape Instagram/TikTok) 
-           → QUALITY GATE (Gina review) 
-           → CONTENT (generate caption + visual prompt) 
-           → QUALITY GATE (Gina review) 
-           → ENGAGEMENT (monitor comments, auto-reply, DM)
-           → DATABASE (semua data tersimpan)
+┌─────────────────────────────────────────────────────────────────┐
+│                         GINA (Orchestrator)                      │
+│                   Kamu → Ngobrol → Delegasi → Review             │
+└──────────────────────────┬──────────────────────────────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │      📋 USER TASK       │
+              │  (Niche/Topic/Platform)  │
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │   🔍 DATADRIFT          │
+              │   Research Agent        │
+              │                         │
+              │ • Scrape Instagram 🇮🇩  │
+              │ • Scrape TikTok 🇮🇩     │
+              │ • Analisis hashtag      │
+              │ • Competitor benchmark  │
+              │ • Save to research_db   │
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │   ✅ QUALITY GATE       │
+              │   (Gina review data)    │
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │   ✍️ COPYFORGE          │
+              │   Content Agent         │
+              │                         │
+              │ • Baca data dari DB     │
+              │ • Generate caption      │
+              │ • Pilih hashtag + CTA   │
+              │ • Simpan ke content_db  │
+              │ • Jadwal via Repliz     │
+              │ • (Gambar/video dari    │
+              │   user, kita simpan     │
+              │   link media_url)       │
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │   ✅ QUALITY GATE       │
+              │   (Gina review caption) │
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │   💬 ECHOGUARD          │
+              │   Engagement Agent      │
+              │                         │
+              │ • Pantau komentar       │
+              │ • Auto-reply           │
+              │ • Balas DM (existing)  │
+              │ • Filter spam          │
+              └────────────┬────────────┘
+                           │
+              ┌────────────▼────────────┐
+              │   🗄️ POSTGRESQL        │
+              │   4 schemas, 14 tables  │
+              └─────────────────────────┘
 ```
+
+## 📝 Cara Kerja CopyForge (Content Creator)
+
+1. **Input**: DataDrift udah nyimpan tren hashtag + data kompetitor ke `research_db`
+2. **Generate**: CopyForge baca data itu, terus bikin 3-5 konsep konten:
+   - Hook (pembuka yang menarik)
+   - Caption (teks utama)
+   - Hashtags (dari data trending)
+   - CTA (ajakan: like, comment, share)
+3. **Media**: Kamu kirim gambar/video → kita simpen **link** di kolom `media_url`
+4. **Schedule**: Jadwal posting via Repliz → otomatis ke Instagram/TikTok
+5. **Save**: Semua tersimpan di `content_db.content_drafts`
+
+## ⚠️ Keterbatasan yang Diketahui
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| ❌ **Start DM baru** | Tidak bisa | Repliz/Meta API gak izinin ngirim DM ke user baru — cuma bisa reply ke DM yg udah masuk |
+| ❌ **Like postingan** | Tidak bisa | Repliz API gak punya endpoint like — limitasi platform API |
+| ❌ **Image generation** | Skip | Kamu kirim sendiri medianya, kita simpen link aja |
+| ✅ **Komen di postingan** | ✅ Bisa | Sudah dites — IG + TikTok berhasil! |
+| ✅ **Jadwal posting** | ✅ Bisa | Sudah dites — ⏰ bisa jadwal + gambar |
+| ✅ **Reply DM existing** | ✅ Bisa | Balas DM yg udah masuk ke akun |
 
 ## 🤖 Agents
 

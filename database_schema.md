@@ -32,7 +32,7 @@ Schema-per-agent pattern — satu database, namespace terpisah.
 
 | Table | Columns | Description |
 |---|---|---|
-| `content_drafts` | id, niche_id FK, idea_id FK, **caption**, platform, status, scheduled_at, posted_at, created_at | Caption siap posting |
+| `content_drafts` | id, niche_id FK, idea_id FK, **caption**, hashtags, cta, media_url, platform, status, scheduled_at, posted_at, created_at | Caption siap posting + user-uploaded media links |
 | `image_assets` | id, draft_id FK, storage_path, prompt_used, model, generated_at | Path gambar AI + prompt |
 | `post_schedule` | id, draft_id FK, platform, scheduled_at, posted_at, post_url, status | Jadwal posting |
 
