@@ -106,7 +106,9 @@ Best practices dari Google:
 - **Aspect ratio**: 1:1 (feed IG), 9:16 (story/reels), 16:9 (horizontal)
 - Resolusi support: 1K, 2K, 4K
 
-Contoh: *"A striking fashion model wearing a tailored brown dress, posing confidently against a deep cherry red studio backdrop, medium-full shot, fashion editorial style, medium-format analog film, pronounced grain."*
+Contoh real (dari riset matcha kita):
+
+> *"Five glasses of matcha latte arranged in a row from left to right, each with different shades of green from light to dark, on a wooden table with natural lighting from the side, top-down flat lay composition, aesthetic cafe photography style, warm tones, soft focus on the matcha glasses, Instagram food photography aesthetic."*
 
 ### 🎬 Prompt Veo 3.1 (Video)
 
@@ -118,7 +120,11 @@ Cinematography options: dolly shot, tracking shot, crane shot, aerial view, slow
 
 Spesifikasi: 720p/1080p, 16:9/9:16, 4-8 detik
 
-Contoh: *"Medium shot, a tired corporate worker rubbing his temples in exhaustion, in front of a bulky computer in a cluttered office late at night, lit by harsh fluorescent lights, retro aesthetic, grainy."*
+Contoh real (dari riset matcha kita):
+
+> *"Slow pan across five glasses of matcha latte lined up on a wooden table, natural sunlight streaming through a window, shallow depth of field, warm cozy cafe ambiance, soft lo-fi background music, each glass showing different shades of vibrant green matcha."*
+
+> *"Close-up of hand whisking matcha in a ceramic bowl with a bamboo chasen, steam rising gently, natural window light, slow motion as the matcha froths, Japanese tea ceremony ambiance, minimalist kitchen setting, ASMR sound of whisking, warm earthy tones."*
 
 ## ⚠️ Keterbatasan yang Diketahui
 

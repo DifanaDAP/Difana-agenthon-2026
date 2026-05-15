@@ -21,6 +21,11 @@ npm-debug.log*
 # OpenClaw
 .openclaw/
 
+# Research outputs (jangan push data riset)
+**/Trend_Report*.md
+**/Content_Calendar*.md
+**/Engagement_Report*.md
+
 # Logs
 *.log
 /logs/
